@@ -1,30 +1,29 @@
-name: Postman API Tests (via Newman)
+name: Run Postman Collection
 
 on:
-  workflow_dispatch: # Cho phép chạy thủ công
-  push:              # Hoặc chạy khi có push code
+  push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
-  run-postman-tests:
+  run-postman:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
       - name: Install Newman
         run: npm install -g newman
 
-      - name: Run Postman Collection from API
+      - name: Download Postman Collection from API
         run: |
-          newman run "https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION_ID }}?apikey=${{ secrets.POSTMAN_API_KEY }}" \
-          --reporters cli,json \
-          --reporter-json-export newman-report.json
+          curl --location \
+          --request GET "https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION_ID }}" \
+          --header "X-Api-Key: ${{ secrets.POSTMAN_API_KEY }}" \
+          --output collection.json
+
+      - name: Run Postman Collection with Newman
+        run: newman run collection.json
+
 
