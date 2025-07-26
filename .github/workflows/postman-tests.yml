@@ -24,6 +24,17 @@ jobs:
           --output collection.json
 
       - name: Run Postman Collection with Newman
-        run: newman run collection.json
+        run: |
+          mkdir -p reports
+          newman run collection.json \
+            --reporters cli,json,htmlextra \
+            --reporter-json-export reports/newman-report.json \
+            --reporter-htmlextra-export reports/newman-report.html
+
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: postman-test-reports
+          path: reports/
 
 
