@@ -1,9 +1,6 @@
 name: Run Postman Collection
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -13,10 +10,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Install Newman
-        run: npm install -g newman
+      - name: Install Newman and HTML Reporter
+        run: npm install -g newman newman-reporter-htmlextra
 
-      - name: Download Postman Collection from API
+      - name: Download Postman Collection
         run: |
           curl --location \
           --request GET "https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION_ID }}" \
@@ -24,6 +21,18 @@ jobs:
           --output collection.json
 
       - name: Run Postman Collection with Newman
-        run: newman run collection.json
+        run: |
+          mkdir -p reports
+          newman run collection.json \
+            --reporters cli,json,htmlextra \
+            --reporter-json-export reports/newman-report.json \
+            --reporter-htmlextra-export reports/newman-report.html
+
+      - name: Upload Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: postman-test-reports
+          path: reports/
+
 
 
