@@ -3,6 +3,7 @@ name: Run Katalon API Tests
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 jobs:
   katalon-api-test:
