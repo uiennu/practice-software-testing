@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description></description>
-   <name>Demo data driven</name>
+   <name>Demo CI CD</name>
    <tag></tag>
-   <UUID>b2cc4b29-dc2a-4dd7-9bf8-5fd83cd552e9</UUID>
+   <UUID>fb8c6a99-838c-4691-9de0-72e7a1601909</UUID>
    <createdEdition>ENTERPRISE</createdEdition>
    <createdVersion>10.2.4</createdVersion>
    <freeLicense>false</freeLicense>
@@ -11,6 +11,7 @@
    <modifiedEdition>ENTERPRISE</modifiedEdition>
    <modifiedVersion>10.2.4</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>C:\Users\FPT136\Katalon Studio\Demo CI CD\Demo CI CD.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

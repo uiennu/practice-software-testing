@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebServiceRequestEntity>
    <description></description>
-   <name>productID</name>
+   <name>products</name>
    <tag></tag>
-   <elementGuidId>e44b5463-f3f0-4c48-a313-554a7eb4616c</elementGuidId>
+   <elementGuidId>822528e5-539b-49c4-bd28-dfb5a02b93ea</elementGuidId>
    <selectorMethod>BASIC</selectorMethod>
    <smartLocatorEnabled>false</smartLocatorEnabled>
    <useRalativeImagePath>false</useRalativeImagePath>
@@ -18,7 +18,7 @@
    <migratedVersion>5.4.1</migratedVersion>
    <path></path>
    <restRequestMethod>GET</restRequestMethod>
-   <restUrl>https://api-with-bugs.practicesoftwaretesting.com/products/1</restUrl>
+   <restUrl>https://api-with-bugs.practicesoftwaretesting.com/products</restUrl>
    <serviceType>RESTful</serviceType>
    <soapBody></soapBody>
    <soapHeader></soapHeader>
