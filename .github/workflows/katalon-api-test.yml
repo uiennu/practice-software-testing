@@ -22,4 +22,5 @@ jobs:
           -reportFolder="Reports" \
           -reportFileName="report" \
           -executionProfile="default" \
+          -browserType="Chrome" \
           -apiKey="${{ secrets.KATALON_API_KEY }}"
