@@ -23,7 +23,7 @@ def responseAll = WS.sendRequest(findTestObject('Object Repository/products'))
 WS.verifyResponseStatusCode(responseAll, 200)
 
 // 2. GET /products/1
-def responseProduct1 = WS.sendRequest(findTestObject('Object Repository/productId'))
+def responseProduct1 = WS.sendRequest(findTestObject('Object Repository/productID'))
 WS.verifyResponseStatusCode(responseProduct1, 200)
 
 // 3. GET /products/1/related
