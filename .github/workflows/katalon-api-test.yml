@@ -16,8 +16,8 @@ jobs:
         run: |
           docker run --rm -v ${{ github.workspace }}:/katalon/katalon/source katalonstudio/katalon \
           katalonc -noSplash -runMode=console \
-          -projectPath="/katalon/katalon/source/YourProject.prj" \
-          -testSuitePath="Test Suites/APITestSuite" \
+          -projectPath="/katalon/katalon/source/Demo CI CD.prj" \
+          -testSuitePath="Test Suites/Test suites 1" \
           -reportFolder="Reports" \
           -reportFileName="report" \
           -executionProfile="default" \
