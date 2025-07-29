@@ -1,4 +1,4 @@
-name: Demo CI/CD
+name:  Run Postman Collection
 
 on:
   push:
