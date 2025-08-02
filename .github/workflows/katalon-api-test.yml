@@ -8,10 +8,11 @@ on:
 jobs:
   katalon-api-test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout full repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Run Katalon API Test Suite
         run: |
