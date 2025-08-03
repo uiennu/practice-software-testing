@@ -1,6 +1,6 @@
 on:
   workflow_run:
-    workflows: ["Run Katalon API Tests"]
+    workflows: ["Run Playwright Tests 🎭"]
     types: [completed]
     branches: [main]
 
