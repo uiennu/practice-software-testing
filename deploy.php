@@ -45,6 +45,7 @@ host('production')
     ->setForwardAgent(true)
     ->set('stage', 'production')
     ->set('deploy_path', '/var/www/api.practicesoftwaretesting.com');
+    ->setIdentityFile('~/.ssh/id_rsa')
 
 // Tasks for each sprint version
 task('deploy:sprint1', function () {
