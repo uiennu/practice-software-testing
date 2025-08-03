@@ -1,4 +1,4 @@
-<?php
+?php
 
 namespace Deployer;
 
@@ -76,10 +76,10 @@ function deploy($source, $webDestination, $apiDestination) {
     // API deployment
     run("cd /var/www/ && mkdir -p api{$apiDestination}.practicesoftwaretesting.com_tmp");
     upload(__DIR__ . "/{$source}/API/", "/var/www/api{$apiDestination}.practicesoftwaretesting.com_tmp");
-    run("mv /var/www/api{$apiDestination}.practicesoftwaretesting.com /var/www/api{$apiDestination}.practicesoftwaretesting.com_bak");
-    run("smv /var/www/api{$apiDestination}.practicesoftwaretesting.com_tmp /var/www/api{$apiDestination}.practicesoftwaretesting.com");
-    run("rm -rf /var/www/api{$apiDestination}.practicesoftwaretesting.com_tmp");
-    run("rm -rf /var/www/api{$apiDestination}.practicesoftwaretesting.com_bak");
+    run("sudo mv /var/www/api{$apiDestination}.practicesoftwaretesting.com /var/www/api{$apiDestination}.practicesoftwaretesting.com_bak");
+    run("sudo mv /var/www/api{$apiDestination}.practicesoftwaretesting.com_tmp /var/www/api{$apiDestination}.practicesoftwaretesting.com");
+    run("sudo rm -rf /var/www/api{$apiDestination}.practicesoftwaretesting.com_tmp");
+    run("sudo rm -rf /var/www/api{$apiDestination}.practicesoftwaretesting.com_bak");
     run("curl https://api{$apiDestination}.practicesoftwaretesting.com/status");
 
     // Running Artisan commands
@@ -90,8 +90,8 @@ function deploy($source, $webDestination, $apiDestination) {
     run("/usr/bin/php /var/www/api{$apiDestination}.practicesoftwaretesting.com/artisan route:cache");
     run("/usr/bin/php /var/www/api{$apiDestination}.practicesoftwaretesting.com/artisan config:clear");
     run("/usr/bin/php /var/www/api{$apiDestination}.practicesoftwaretesting.com/artisan l5-swagger:generate");
-    run("chmod -R 777 /var/www/api{$apiDestination}.practicesoftwaretesting.com/storage");
-    run("chown -R www-data:www-data /var/www/api{$apiDestination}.practicesoftwaretesting.com/storage");
+    run("sudo chmod -R 777 /var/www/api{$apiDestination}.practicesoftwaretesting.com/storage");
+    run("sudo chown -R www-data:www-data /var/www/api{$apiDestination}.practicesoftwaretesting.com/storage");
 
     // UI Deployment
     runLocally("rm -rf {$source}/UI/node_modules/esbuild/");
@@ -102,8 +102,8 @@ function deploy($source, $webDestination, $apiDestination) {
 
     run("cd /var/www/ && mkdir -p {$webDestination}practicesoftwaretesting.com_tmp/public_html");
     upload(__DIR__ . "/{$source}/UI/dist/toolshop/", "/var/www/{$webDestination}practicesoftwaretesting.com_tmp/public_html");
-    run("mv /var/www/{$webDestination}practicesoftwaretesting.com /var/www/{$webDestination}practicesoftwaretesting.com_bak");
-    run("mv /var/www/{$webDestination}practicesoftwaretesting.com_tmp /var/www/{$webDestination}practicesoftwaretesting.com");
-    run("rm -rf /var/www/{$webDestination}practicesoftwaretesting.com_tmp");
-    run("rm -rf /var/www/{$webDestination}practicesoftwaretesting.com_bak");
+    run("sudo mv /var/www/{$webDestination}practicesoftwaretesting.com /var/www/{$webDestination}practicesoftwaretesting.com_bak");
+    run("sudo mv /var/www/{$webDestination}practicesoftwaretesting.com_tmp /var/www/{$webDestination}practicesoftwaretesting.com");
+    run("sudo rm -rf /var/www/{$webDestination}practicesoftwaretesting.com_tmp");
+    run("sudo rm -rf /var/www/{$webDestination}practicesoftwaretesting.com_bak");
 }
