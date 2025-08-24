@@ -1,1 +1,26 @@
+name:  Run HW07 Testcases
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
+jobs:
+  run-postman:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Newman
+        run: npm install -g newman
+
+      - name: Download Postman Collection from API
+        run: |
+          curl --location \
+          --request GET "https://api.getpostman.com/collections/${{ secrets.POSTMAN_COLLECTION_ID }}" \
+          --header "X-Api-Key: ${{ secrets.POSTMAN_API_KEY }}" \
+          --output collection.json
+
+      - name: Run Postman Collection with Newman
+        run: newman run collection.json
